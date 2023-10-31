@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>
+            calculator project
+        </title>
+        <style>
+            body {
+                font-family:Arial;
+                background-color:black;
+            }
+            .text {
+                font-family:Arial;
+                font-size:45px;
+                font-weight:bold;
+                color:white;
+                margin-top:15px;
+                margin-bottom:5px;
+            }
+            .button-cal {
+                border:none;
+                height:60px;
+                width:60px;
+                border-radius:60px;
+                font-size:26px;
+                cursor:pointer;
+                margin-right:5px;
+            }
+            .button-gray {
+                background-color:rgb(51,51,51);
+                color:white;
+            }
+            .button-orange {
+                background-color:orange;
+                color:white;
+            }
+            .button-clear {
+                font-size:16px;
+            }
+        </style>
+    </head>
+    <body>
+        <p class="js-text text"></p>
+        <p><button onclick="updated('1');" class="button-cal button-gray">1</button>
+        <button onclick="updated('2');" class="button-cal button-gray">2</button>
+        <button onclick="updated('3');" class="button-cal button-gray">3</button>
+        <button onclick="updated(' + ');" class="button-cal button-orange">+</button>
+        <button onclick="calc = eval(calc);displaycal();localStorage.setItem('calc',calc);" class="button-cal button-gray">=</button></p>
+        <p>
+            <button onclick="updated('4');" class="button-cal button-gray">4</button>
+            <button onclick="updated('5');" class="button-cal button-gray">5</button>
+            <button onclick="updated('6');" class="button-cal button-gray">6</button>
+            <button onclick="updated(' - ');" class="button-cal button-orange">-</button>
+        </p>
+        <p>
+            <button onclick="updated('7');" class="button-cal button-gray">7</button>
+            <button onclick="updated('8');" class="button-cal button-gray">8</button>
+            <button onclick="updated('9');" class="button-cal button-gray">9</button>
+            <button onclick="updated(' * ')" class="button-cal button-orange">*</button>
+        </p>
+        <p>
+            <button onclick="updated('0');" class="button-cal button-gray">0</button>
+            <button onclick="updated('.');" class="button-cal button-gray">.</button>
+            <button onclick="calc =eval(calc);displaycal();localStorage.setItem('calc',calc);" class="button-cal button-gray">=</button>
+            <button onclick="updated(' / ')" class="button-cal button-orange">/</button>
+        </p>
+        <p>
+            <button onclick="calc = '';displaycal();localStorage.setItem('calc',calc);" class="button-cal button-clear button-gray">Clear</button>
+        </p>
+
+        <script>
+            let calc = localStorage.getItem('calc') || '';
+            displaycal();
+            function updated(symbol) {
+                calc += symbol;
+                displaycal();
+                localStorage.setItem('calc',calc);
+            }
+            function displaycal() {
+                document.querySelector('.js-text').innerHTML = calc;
+            }
+        </script>
+    </body>
+</html>
